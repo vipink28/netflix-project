@@ -1,0 +1,172 @@
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Amita&family=Calistoga&family=Poppins:wght@200;400;500&display=swap');
+body, html{
+    height: 100%;
+}
+body{
+    background-color: #141414;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+#root{
+    height: 100%;
+}
+
+.navbar{
+    background-image: linear-gradient(180deg,rgba(0,0,0,.7) 10%,transparent);
+    transition: all .3s ease-in;
+
+}
+.navbar.scrolled{
+    background-image: none;
+    background-color: #141414;
+}
+.nav-link{
+    color: #fff;
+}
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link{
+    color: #fff;
+}
+.nav-link:hover, .nav-link.active:hover{
+    color: #d5d5d5;
+}
+
+.title{
+    font-family: 'Calistoga', cursive;
+}
+.header-img{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 0;
+}
+
+.caption{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
+    width: 100%;
+    max-width: 650px;
+    z-index: 20;
+}
+.header-vignette{
+    background: linear-gradient(77deg,rgba(0,0,0,0.7),transparent 85%);
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 26.09%;
+    top: 0;
+    transition: opacity .5s;
+}
+
+.header-bottom-vignette{
+    background-color: transparent;
+    background-image: linear-gradient(180deg,hsla(0,0%,8%,0) 0,hsla(0,0%,8%,.15) 15%,hsla(0,0%,8%,.35) 29%,hsla(0,0%,8%,.58) 44%,#141414 68%,#141414);
+    background-position: 0 top;
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    bottom: -1px;
+    height: 14.7vw;
+    opacity: 1;
+    top: auto;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 8;
+}
+.tagline{
+    font-family: 'Amita', cursive;
+}
+.card{
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+}
+.card .card-img-top{
+    border-radius: 0;
+    transform: scale(1.1);
+    transition:  all .2s ease-out;
+}
+.card::before{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(77deg,rgba(0,0,0,0.7),transparent 85%);
+    background-size: 150% 150%;
+    background-position: 100% 100%;
+    top: 0;
+    left: 0;
+    transition: all .2s;
+    z-index: 1;
+}
+.card-body{
+    position: absolute;
+    width: 100%;
+    bottom: -7.3rem;
+    left: 0;
+    opacity: 1;
+    transition: bottom .2s ease-in;
+    z-index: 2;
+}
+.card .card-body h5{
+    width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 2rem;
+    transition: margin-bottom .2s ease-out;
+}
+.card:hover .card-body{
+    bottom: 0;
+}
+.card:hover::before{
+    background-position: 0 100%;
+}
+.card:hover .card-body h5{
+    margin-bottom: .5rem;
+}
+.card:hover .card-img-top{
+    transform: scale(1);
+}
+.video-row:first-child{
+    margin-top: -10rem;
+    position: relative;
+    z-index: 100;
+}
+.swiper-button-disabled{
+    display: none;
+}
+
+.swiper-button-next, .swiper-button-prev{
+    color: #fff;
+}
+
+.youtube-player{
+    position: relative;
+    z-index: 7;
+}
+#videoDetails .modal-dialog{
+    max-width: 1024px;
+}
+.modal-content{
+    background-color: #141414;
+}
+#videoDetails .modal-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 15;
+    background-image: linear-gradient(180deg,rgba(0,0,0,.7) 50%,transparent);
+}
+#videoDetails .modal-body{
+    padding: 0;
+}

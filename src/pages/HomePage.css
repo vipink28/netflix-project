@@ -1,0 +1,360 @@
+.showcase {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    background-image: url(https://i.ibb.co/vXqDmnh/background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: solid #222222 8px;
+    box-shadow: inset 100px 100px 250px #222222, inset -100px -100px 250px #000000;
+  }
+  
+  .showcase::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .header-wrapper {
+    position: relative;
+    padding: 20px 0 20px;
+    z-index: 2;
+  }
+  
+  .header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 45px;
+    height: 100%;
+  }
+  
+  .header-logo {
+    display: inline;
+    width: 134px;
+    height: 44px;
+    padding: 8px 0 0;
+  }
+  
+  .header-btn {
+    display: inline;
+    background-color: #e50914;
+    color: #ffffff;
+    text-align: center;
+    margin: 8px 0 8px;
+    border-radius: 3px;
+    padding: 7px 17px;
+    cursor: pointer;
+  }
+  
+  .content-wrapper {
+    position: relative;
+    padding: 50px 35px;
+    z-index: 2;
+  }
+  
+  .content {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    padding: 75px 0;
+  }
+  
+  .content-title {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 55px;
+    text-align: center;
+  }
+  
+  .content-subtitle {
+    max-width: 640px;
+    margin: 16px auto;
+    font-size: 26px;
+    font-weight: 100;
+    text-align: center;
+  }
+  
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    padding: 13.6px 0 0;
+  }
+  
+  .email-form-title {
+    margin: 0 auto;
+    padding: 0 5% 20px;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  .email-form-input {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+  }
+  
+  .email-form-text {
+    min-width: 450px;
+    height: 60px;
+    margin-bottom: 10px;
+    border-color: #8c8c8c;
+    border-radius: 2px 0px 0px 2px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: text;
+  }
+  
+  .email-form-btn {
+    display: inline-flex;
+    background-color: #f40612;
+    color: #ffffff;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0 2px 2px 0;
+    padding: 0 26px;
+    font-size: 26px;
+    letter-spacing: 0.1px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  .story-wrapper {
+    position: relative;
+    margin-bottom: 0;
+    border-bottom: solid #222222 8px;
+    padding: 35px 45px;
+  }
+  
+  .story {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .story-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .story-text {
+    width: 52%;
+    height: 100%;
+    padding: 0 3rem 0 0;
+  }
+  
+  .story-text-reverse {
+    width: 52%;
+    height: 100%;
+    padding: 0 0 3rem 0;
+  }
+  
+  .story-title {
+    margin: 0 0 8px;
+    font-size: 50px;
+    line-height: 1.1;
+  }
+  
+  .story-subtitle {
+    margin: 20px 0 6.5px;
+    font-size: 26px;
+    font-weight: 400;
+  }
+  
+  .story-img-container {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+  }
+  
+  .story-img {
+    position: relative;
+  }
+  
+  .footer-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 70px 45px;
+  }
+  
+  .footer {
+    margin: 0 auto;
+  }
+  
+  .footer a {
+    color: #757575;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-top {
+    margin: 0 0 30px;
+    color: #757575;
+  }
+  
+  .footer-structure {
+    box-sizing: border-box;
+    font-size: 13px;
+  }
+  
+  .footer-structure li {
+    display: inline-block;
+    min-width: 100px;
+    width: 24.5%;
+    margin-bottom: 16px;
+    padding: 0 12px 0 0;
+    vertical-align: top;
+  }
+  
+  @media (max-width: 960px) {
+    .showcase {
+      height: 100vh;
+    }
+  
+    .header-logo {
+      width: 108px;
+      height: 40px;
+    }
+  
+    .content-wrapper {
+      padding: 50px 0;
+    }
+  
+    .email-form {
+      padding-top: 0;
+    }
+  
+    .email-form-title {
+      padding-bottom: 10px;
+      font-size: 18px;
+    }
+  
+    .email-form-input {
+      flex-direction: column;
+    }
+  
+    .email-form-text {
+      min-width: 450px;
+      height: 45px;
+      font-size: 14px;
+    }
+  
+    .email-form-btn {
+      margin: 4px auto;
+      border-radius: 2px;
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+  
+    .story-wrapper {
+      padding: 70px 0;
+    }
+  
+    .story {
+      flex-direction: column;
+    }
+  
+    .story-reverse {
+      flex-direction: column;
+    }
+  
+    .story-text {
+      width: 80%;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+  
+    .story-text-reverse {
+      width: 80%;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+  
+    .story-title {
+      font-size: 40px;
+    }
+  
+    .story-subtitle {
+      font-size: 20px;
+    }
+  
+    .story-img-container {
+      width: 85%;
+    }
+  
+    .footer-structure li {
+      width: 32%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .showcase {
+      height: 80vh;
+    }
+  
+    .header-logo {
+      width: 90px;
+      height: 32px;
+    }
+  
+    .header-btn {
+      padding: 5px 8px;
+      font-size: 15px;
+    }
+  
+    .content-wrapper {
+      padding: 10px 0px;
+    }
+  
+    .content-title {
+      font-size: 28px;
+      line-height: 30px;
+    }
+  
+    .content-subtitle {
+      font-size: 18px;
+    }
+  
+    .email-form-text {
+      min-width: 400px;
+    }
+  
+    .story-title {
+      font-size: 26px;
+    }
+  
+    .story-subtitle {
+      font-size: 18px;
+    }
+  
+    .footer-structure li {
+      width: 48%;
+    }
+  }
+  
