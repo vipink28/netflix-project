@@ -4,12 +4,13 @@ import {
   selectPlatform,
   selectVideoDetails,
 } from "../features/common/commonSlice";
-import { dateFormat, numToTime } from "../helper";
+import { dateFormat, formatCurrency, numToTime } from "../helper";
 import VideoPlayer from "./VideoPlayer";
 import { requests } from "../helper/requests";
 import axios from "../helper/axios";
 import Card from "./Card";
 import GenreLink from "./GenreLink";
+import Ratings from "./Ratings";
 
 function Popup(props) {
   const { data } = useSelector(selectVideoDetails);
@@ -18,6 +19,8 @@ function Popup(props) {
   const [similarVideos, setSimilarVideos] = useState();
   const [recommendedVideos, setRecommendedVideos] = useState();
   const [credits, setCredits] = useState();
+  const [director, setDirector]=useState();
+  const [producer, setProducer]=useState();
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
@@ -34,6 +37,10 @@ function Popup(props) {
     const getVideoCredits = async () => {
       const response = await axios.get(requests.getCredits(data.id, type));
       setCredits(response.data);
+      const director = response.data.crew.filter(item=>item.job === 'Director');
+      setDirector(director);
+      const producer = response.data.crew.filter(item=>item.job === 'Producer' || item.job === 'Executive Producer');
+      setProducer(producer);
     };
 
     if (data && type) {
@@ -73,36 +80,68 @@ function Popup(props) {
               <div className="row">
                 <div className="col-lg-7">
                   <div className="py-2">
-                    <h5>{data?.name || data?.title || data?.original_title}</h5>
+                    <h3 className="mb-0">{data?.name || data?.title || data?.original_title}</h3>
                   </div>
                   <div className="d-flex align-items-center py-2">
                     {data?.release_date ? (
-                      <p className="pe-2">{dateFormat(data?.release_date)}</p>
+                      <p className="pe-4 mb-0">{dateFormat(data?.release_date)}</p>
                     ) : (
-                      <p className="pe-2">{dateFormat(data?.first_air_date)}</p>
+                      <p className="pe-4 mb-0">{dateFormat(data?.first_air_date)}</p>
                     )}
-
                     {data?.runtime ? (
-                      <p>{numToTime(data?.runtime)}</p>
+                      <p className="me-4 mb-0">{numToTime(data?.runtime)}</p>
                     ) : (
-                      <p>{numToTime(data?.episode_run_time)}</p>
+                      <p className="me-4 mb-0">{numToTime(data?.episode_run_time)}</p>
                     )}
+                    <div style={{'marginTop': '-13px'}}>
+                    <Ratings voteAverage={data?.vote_average} voteCount={data?.vote_count}/>
+                    </div>
                   </div>
+                  <p className="mt-3 mb-5">{data?.overview}</p>
                 </div>
                 <div className="col-lg-5">
                   <div className="py-2">
-                    {data?.genres.map((item) => {
+                    <span className="text-muted">Cast: </span>
+                    {credits?.cast.map((item, index) => {
                       return (
-                       <GenreLink genre={item} type={type}/>
+                          index <= 10 ? 
+                          <span key={item.id}>{item.name}{index < 10  ?  ', ':''}</span> : ""
                       );
                     })}
                   </div>
+
+                  <div className="py-2">
+                    <span className="text-muted">Genres: </span>
+                    {data?.genres.map((item, index) => {
+                      return (
+                        <>
+                        <GenreLink key={item.id} genre={item} type={type} isBadge={false} isLast={index === data?.genres.length-1 ? true: false }/>
+                       </>
+                      );
+                    })}
+                  </div>
+                  <div className="py-2">
+                    <span className="text-muted">Production Companies: </span>
+                    {data?.production_companies?.map((item, index) => {
+                      return (
+                          index <= 1 ? 
+                          <span key={item.id}>{item.name}{index < 1 ? ', ':''}</span> : ""
+                      );
+                    })}
+                  </div>
+                  {
+                    data?.revenue ?
+                  <div className="py-2">
+                    <span className="text-muted">Revenue: </span>
+                    <span>{formatCurrency(data?.revenue)}</span>
+                  </div>: ""
+                  }
                 </div>
               </div>
               
               <div className="row gy-3">
-                <h3>Similar {type === "tv" ? "Shows": "Movies"}</h3>
-                {similarVideos?.map((item, index) => {          
+                <h5>Similar {type === "tv" ? "Shows": "Movies"}</h5>
+                {similarVideos?.map((item, index) => {
                   return (
                     index < 6 ? 
                     <div key={item.id} className="col-lg-4">
@@ -113,7 +152,7 @@ function Popup(props) {
               </div>
 
               <div className="row gy-3 mt-5">
-                <h3>Recommended {type === "tv" ? "Shows": "Movies"}</h3>
+                <h5>Recommended {type === "tv" ? "Shows": "Movies"}</h5>
                 {recommendedVideos?.map((item, index) => {          
                   return (
                     index < 6 ? 
@@ -122,6 +161,21 @@ function Popup(props) {
                     </div> : ""
                   )
                 })}
+              </div>
+              <hr />
+              <div className="row">
+                <div className="col-lg-12">
+                <h3 className="mb-3"><span className="fw-light">About</span> {data?.name || data?.title || data?.original_title}</h3>
+                <p className="mb-1"><span className="text-muted">Director: </span> { director?.map((item, index)=>{
+                    return <span>{item.name}{index < director.length-1 && ', '} </span> 
+                  }) }</p>
+                  <p className="mb-1"><span className="text-muted">Producer: </span> { producer?.map((item, index)=>{
+                    return <span>{item.name}{index < producer.length-1 && ', '} </span> 
+                  }) }</p>
+                  <p className="mb-1"><span className="text-muted">Cast: </span> { credits?.cast.map((item, index)=>{
+                    return <span>{item.name}{index < credits?.cast.length-1 && ', '} </span> 
+                  }) }</p>
+                </div>
               </div>
 
             </div>

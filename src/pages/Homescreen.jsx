@@ -10,7 +10,7 @@ function Homescreen(props) {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(fetchNetflixOriginals());
-    }, [])
+    }, [dispatch])
     const random = Math.floor(Math.random() * nfOriginals.data?.results.length);
     return (
         <>

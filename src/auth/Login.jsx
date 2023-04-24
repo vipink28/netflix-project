@@ -22,8 +22,7 @@ function Login(props) {
             status: true,
             userDetails: user.displayName,
             error: error
-        }));
-        btn.current.click();
+        }));        
         navigate('/');
       })
       .catch((error) => {
@@ -32,6 +31,7 @@ function Login(props) {
           errorMessage: error.message,
         });
       });
+      btn.current.click();
   };
 
   const handleEmailChange = (event) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { searchText } from '../features/common/commonSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
@@ -39,25 +39,25 @@ function Navigation(props) {
     return (
   <nav className="navbar navbar-expand-lg fixed-top">
   <div className="container-fluid">
-    <Link className="navbar-brand" to="/">
+    <NavLink className="navbar-brand" to="/">
       <img src="https://i.ibb.co/r5krrdz/logo.png" alt='netflix' className='header-logo'/>
-    </Link>
+    </NavLink>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+          <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/browse/movie">Movie</Link>
+          <NavLink className="nav-link" to="/browse/movie">Movie</NavLink>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/browse/tv">Tv</Link>
+          <NavLink className="nav-link" to="/browse/tv">Tv</NavLink>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/browsebygenre/movie/Action/28">Browse By Genre</Link>
+          <NavLink className="nav-link" to="/browsebygenre/movie/Action/28">Browse By Genre</NavLink>
         </li>
         <div className='d-flex ms-auto'>
         <input className='form-control me-2 rounded-pill bg-transparent text-white' type="text" name='search' placeholder='search' onChange={handleSearch}/>
