@@ -11,6 +11,7 @@ import axios from "../helper/axios";
 import Card from "./Card";
 import GenreLink from "./GenreLink";
 import Ratings from "./Ratings";
+import EpisodeList from "./EpisodeList";
 
 function Popup(props) {
   const { data } = useSelector(selectVideoDetails);
@@ -89,7 +90,7 @@ function Popup(props) {
                       <p className="pe-4 mb-0">{dateFormat(data?.first_air_date)}</p>
                     )}
                     {data?.runtime ? (
-                      <p className="me-4 mb-0">{numToTime(data?.runtime)}</p>
+                      <p className="me-4 mb-0">{data?.runtime ? numToTime(data?.runtime) : numToTime(data?.episode_run_time[0])}</p>
                     ) : (
                       <p className="me-4 mb-0">{numToTime(data?.episode_run_time)}</p>
                     )}
@@ -138,7 +139,12 @@ function Popup(props) {
                   }
                 </div>
               </div>
+              {
+                data?.seasons ?
+                <EpisodeList tvId={data?.id} seasons={data?.seasons}/> : ""
+              }
               
+              { similarVideos.length > 0 ?
               <div className="row gy-3">
                 <h5>Similar {type === "tv" ? "Shows": "Movies"}</h5>
                 {similarVideos?.map((item, index) => {
@@ -149,9 +155,12 @@ function Popup(props) {
                     </div> : ""
                   )
                 })}
-              </div>
+              </div>: ""
+              }
 
-              <div className="row gy-3 mt-5">
+              {
+                recommendedVideos.length > 0 ?
+                <div className="row gy-3 mt-5">
                 <h5>Recommended {type === "tv" ? "Shows": "Movies"}</h5>
                 {recommendedVideos?.map((item, index) => {          
                   return (
@@ -161,7 +170,10 @@ function Popup(props) {
                     </div> : ""
                   )
                 })}
-              </div>
+              </div>: ""
+              }
+              
+
               <hr />
               <div className="row">
                 <div className="col-lg-12">

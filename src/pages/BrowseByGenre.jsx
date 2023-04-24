@@ -45,22 +45,22 @@ function BrowseByGenre(props) {
   }
 
   return (
-    <div className="pt-5 mt-3 container-fluid">
+    <div className="pt-5 mt-5 container-fluid">
       <div className="d-flex">
-        <h3 className="text-white mb-4">{genrename}</h3>
-        <div className="ms-auto">
-            <select name="platform" onChange={onPlatformSelect}>
-                <option value="movie" selected>Movie</option>
+        <h3 className="text-white mb-4 mt-4">{genrename}</h3>
+        <div className="ms-auto d-flex w-25 align-items-center">
+          <p className="text-nowrap mb-0 me-2">Select Genre</p>
+            <select className="form-select d-inline-flex me-3" name="platform" onChange={onPlatformSelect}>
+                <option defaultValue="movie" value="movie">Movie</option>
                 <option value="tv">Tv</option>                
             </select>
-            <select name="genre" onChange={onGenreSelect}>
-                <option selected>Select Genre</option>
+            <select className="form-select d-inline-flex" name="genre" onChange={onGenreSelect}>
+                <option defaultValue="action">Select Genre</option>
                {
                 genreList.map((item)=>{
                     return <option key={item.id} value={item.id}>{item.name}</option>
                 })
-               }
-                
+               }                
             </select>
         </div>
       </div>

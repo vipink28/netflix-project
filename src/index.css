@@ -165,7 +165,7 @@ input[type=number] {
     z-index: 7;
 }
 #videoDetails .modal-dialog{
-    max-width: 1024px;
+    max-width: 1100px;
 }
 .modal-content{
     background-color: #141414;
