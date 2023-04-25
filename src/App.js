@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, userAction } from "./features/auth/auth.slice";
 import { auth } from "./auth/FirebaseAuth";
+import Profile from "./pages/Profile";
 
 function App() {
   const userStatus = useSelector(selectUser);
@@ -47,6 +48,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}>
             <Route path="/" index element={<Homescreen />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/browse/:platform" element={<Browse />}></Route>
             <Route
               path="/browsebygenre/:platform/:genrename/:genreid"
