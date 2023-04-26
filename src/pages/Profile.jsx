@@ -27,7 +27,7 @@ function Profile(props) {
 
     return (
         <div className='pt-5 mt-5 text-center'>
-            <input type="file" onChange={handleFile} />
+            <input type="file" onChange={handleFile} multiple="multiple"/>
 
             <div className='img-fluid p-3'>
                 <img src={imgString} alt="landscape" />
