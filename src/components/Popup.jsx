@@ -144,7 +144,7 @@ function Popup(props) {
                 <EpisodeList tvId={data?.id} seasons={data?.seasons}/> : ""
               }
               
-              { similarVideos.length > 0 ?
+              { similarVideos?.length > 0 ?
               <div className="row gy-3">
                 <h5>Similar {type === "tv" ? "Shows": "Movies"}</h5>
                 {similarVideos?.map((item, index) => {
@@ -159,7 +159,7 @@ function Popup(props) {
               }
 
               {
-                recommendedVideos.length > 0 ?
+                recommendedVideos?.length > 0 ?
                 <div className="row gy-3 mt-5">
                 <h5>Recommended {type === "tv" ? "Shows": "Movies"}</h5>
                 {recommendedVideos?.map((item, index) => {          

@@ -33,7 +33,6 @@ function App() {
           }));
       }
     });
-
     // Clean up subscription on unmount
     return unsubscribe;
   }, [dispatch]);
